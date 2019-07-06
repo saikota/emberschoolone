@@ -14,6 +14,6 @@ export default Route.extend({
     //   name:'three',
     //   available:true
     // }];
-    return this.store.query('food');
+    return this.store.findAll('food');
   }
 });

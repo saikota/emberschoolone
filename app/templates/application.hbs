@@ -2,10 +2,11 @@
 <h1>Welcome {{name}}!!</h1>
 
 {{model.length}} total foods !!
-{{menuAvailable.length}} are Available !!
+{{menuAvailable.length}} are Available  and have {{numOrdersCount}} orders!!
 <ul>
 {{#each model as |food|}}
 <li>
+  <div>
 {{food.name}} is
  {{#if food.isAvailable}}
     <button {{action "makeUnavailable" food}}> Make Un Available</button>
@@ -13,11 +14,21 @@
     <button {{action "makeAvailable" food}}> Make Available</button>
     <button {{action "destroy" food}}>Delete</button>
 {{/if}}
+</div>
+<div>
+  Number of Orders: <button {{action "increaseOrder" food}}> + </button> {{food.numberOfOrders}} <button {{action "decreaseOrder" food}}> - </button>
+</div>
+
 </li>
 {{/each}}
 </ul>
 
 <hr>
-{{input value=newItem}}
+<div>
+Name:{{input value=newItem}}
+</div>
+<div>
+NumberOfOrders:{{input value=numOrders}}
+</div>
 <button {{action "saveItem"}}> Save </button>
 {{outlet}}
